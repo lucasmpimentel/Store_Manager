@@ -6,7 +6,7 @@ const getAllSales = rescue(async (_req, res, _next) => {
   res.status(200).json(sales);
 });
 
-const getSaleByID = rescue(async (req, res, next) => {
+const getSaleByID = rescue(async (req, res, _next) => {
   const { id } = req.params;
   const sale = await salesService.getSaleByID(id);
   res.status(200).json(sale);
@@ -15,4 +15,4 @@ const getSaleByID = rescue(async (req, res, next) => {
 module.exports = {
   getAllSales,
   getSaleByID,
-}
+};

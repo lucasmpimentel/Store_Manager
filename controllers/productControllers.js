@@ -14,5 +14,5 @@ const getProductByID = rescue(async (req, res, _next) => {
 
 module.exports = {
   getAllProducts,
-  getProductByID
+  getProductByID,
 };

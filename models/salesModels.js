@@ -5,7 +5,7 @@ const serialize = (sale) => ({
   date: sale.date,
   productId: sale.product_id,
   quantity: sale.quantity,
-})
+});
 
 const getAllSales = async () => {
   const [sales] = await connection.execute(
@@ -27,9 +27,9 @@ const getSaleByID = async (id) => {
     [id],
   );
   return sales.map(serialize);
-}
+};
 
 module.exports = {
   getAllSales,
   getSaleByID,
-}
+};
