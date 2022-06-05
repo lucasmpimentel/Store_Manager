@@ -1,7 +1,13 @@
 const connection = require('./connection');
 
-const serialize = (sale) => ({
+const serializeAll = (sale) => ({
   saleId: sale.id,
+  date: sale.date,
+  productId: sale.product_id,
+  quantity: sale.quantity,
+});
+
+const serializeByID = (sale) => ({
   date: sale.date,
   productId: sale.product_id,
   quantity: sale.quantity,
@@ -14,7 +20,7 @@ const getAllSales = async () => {
     + 'INNER JOIN StoreManager.sales_products AS sp '
     + 'ON s.id = sp.sale_id;',
   );
-  return sales.map(serialize);
+  return sales.map(serializeAll);
 };
 
 const getSaleByID = async (id) => {
@@ -26,7 +32,7 @@ const getSaleByID = async (id) => {
     + 'WHERE s.id=?;',
     [id],
   );
-  return sales.map(serialize);
+  return sales.map(serializeByID);
 };
 
 module.exports = {
