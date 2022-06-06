@@ -17,14 +17,13 @@ const newSaleValidation = rescue((req, res, next) => {
   const sales = req.body;
   
   sales.forEach(({ productId, quantity }) => {
-    // console.log(productId, quantity);
   const { error } = productSchema.validate({ productId, quantity });
-  // console.log(error)
   if (error) {
     console.log(error.details[0].type);
     error.status = error.details[0].type === 'any.required' ? 400 : 422;
     throw new CustomError(error.status, error.message);
-  }});
+  }
+  });
 
   next();
 });

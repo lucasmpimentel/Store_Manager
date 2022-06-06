@@ -17,10 +17,18 @@ const getSaleByID = rescue(async (req, res) => {
 // ---------------------- INSERT ----------------------------
 
 const insertSale = rescue(async (req, res) => {
-  res.status(200).json()
+  res.status(201).json();
+});
+
+// ---------------------- UPDATE -----------------------------
+
+const updateSale = rescue(async (req, res) => {
+  res.status(200).json();
 });
 
 module.exports = {
   getAllSales,
   getSaleByID,
+  insertSale,
+  updateSale,
 };
