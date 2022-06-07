@@ -17,7 +17,9 @@ const getSaleByID = rescue(async (req, res) => {
 // ---------------------- INSERT ----------------------------
 
 const insertSale = rescue(async (req, res) => {
-  res.status(201).json();
+  const sales = req.body;
+  const insertion = await salesService.insertSale(sales);
+  res.status(201).json(insertion);
 });
 
 // ---------------------- UPDATE -----------------------------

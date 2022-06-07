@@ -1,6 +1,8 @@
 const salesModels = require('../models/salesModels');
 const CustomError = require('../utils/CustomError');
 
+// -------------------------- SEARCH ----------------------------
+
 const getAllSales = async () => {
   const sales = await salesModels.getAllSales();
   
@@ -15,7 +17,21 @@ const getSaleByID = async (id) => {
   return sale;
 };
 
+// -------------------------- INSERT -----------------------------
+
+const insertSale = async (sale) => {
+  const newSaleID = await salesModels.insertSale(sale);
+
+  const newSale = {
+    id: newSaleID,
+    itemsSold: [...sale],
+  };
+  
+  return newSale;
+};
+
 module.exports = {
   getAllSales,
   getSaleByID,
+  insertSale,
 };
