@@ -21,17 +21,29 @@ const getSaleByID = async (id) => {
 
 const insertSale = async (sale) => {
   const newSaleID = await salesModels.insertSale(sale);
-
   const newSale = {
     id: newSaleID,
     itemsSold: [...sale],
   };
-  
+
   return newSale;
+};
+
+// -------------------------- UPDATE ------------------------------
+
+const updateSale = async (id, sale) => {
+  await salesModels.updateSale(id, sale);
+  const result = {
+    saleId: id,
+    itemUpdated: [...sale],
+  };
+
+  return result;
 };
 
 module.exports = {
   getAllSales,
   getSaleByID,
   insertSale,
+  updateSale,
 };

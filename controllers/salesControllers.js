@@ -25,7 +25,10 @@ const insertSale = rescue(async (req, res) => {
 // ---------------------- UPDATE -----------------------------
 
 const updateSale = rescue(async (req, res) => {
-  res.status(200).json();
+  const { id } = req.params;
+  const sale = req.body;
+  const updated = await salesService.updateSale(id, sale);
+  res.status(200).json(updated);
 });
 
 module.exports = {

@@ -36,6 +36,7 @@ routes.route('/sales/:id')
   .get(sales.getSaleByID)
   .put(
   salesValidation.newSaleValidation,
+  sales.updateSale,
   );
 
 module.exports = routes;

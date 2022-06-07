@@ -19,7 +19,6 @@ const newSaleValidation = rescue((req, res, next) => {
   sales.forEach(({ productId, quantity }) => {
   const { error } = productSchema.validate({ productId, quantity });
   if (error) {
-    console.log(error.details[0].type);
     error.status = error.details[0].type === 'any.required' ? 400 : 422;
     throw new CustomError(error.status, error.message);
   }
