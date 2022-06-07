@@ -38,11 +38,13 @@ const insertProduct = async (product) => {
 // ---------------------  UPDATE ----------------------------
 
 const updateProduct = async (id, product) => {
-  const productDB = await productModels.getProductByID(id);
+  await getProductByID(id);
   
-  if (!productDB) throw new CustomError(404, 'Product not found');
-  
-  const newProduct = await productModels.updateProduct(id, product);
+  await productModels.updateProduct(id, product);
+  const newProduct = {
+    id,
+    ...product,
+  }
   
   return newProduct;
 };

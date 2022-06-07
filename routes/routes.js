@@ -8,30 +8,36 @@ const routes = express.Router();
 
 // ----------------------- PRODUCTS ----------------------- //
 
-routes.get('/products', products.getAllProducts);
-routes.get('/products/:id', products.getProductByID);
-routes.post(
-  '/products',
-  productsValidation.insertValidation,
-  products.insertProduct,
-);
-routes.put(
-  '/products/:id',
+routes.route('/products')
+  .get(products.getAllProducts)
+  .post(
+    productsValidation.insertValidation,
+    products.insertProduct,
+  );
+
+routes.route('/products/:id')
+  .get(products.getProductByID)
+  .put(
   productsValidation.insertValidation,
   products.updateProduct,
-);
+  );
 
 // ------------------------- SALES ------------------------ //
 
-routes.get('/sales', sales.getAllSales);
-routes.get('/sales/:id', sales.getSaleByID);
-routes.post(
-  '/sales',
+routes.route('/sales')
+  .get(sales.getAllSales)
+  .post(
   salesValidation.newSaleValidation,
-);
-routes.put(
-  '/sales/:id',
+  sales.insertSale,
+  );
+
+routes.route('/sales/:id')
+  .get(sales.getSaleByID)
+  .put(
   salesValidation.newSaleValidation,
-);
+  );
 
 module.exports = routes;
+
+// Aprendi essa nova forma de declarar as rotas com o Wilk,
+// achei que fica bem mais organizado e legível e decidi usar.
