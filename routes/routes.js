@@ -20,7 +20,8 @@ routes.route('/products/:id')
   .put(
   productsValidation.insertValidation,
   products.updateProduct,
-  );
+  )
+  .delete(products.deleteProduct);
 
 // ------------------------- SALES ------------------------ //
 
