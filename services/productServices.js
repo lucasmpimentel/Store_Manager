@@ -5,8 +5,6 @@ const CustomError = require('../utils/CustomError');
 
 const getAllProducts = async () => {
   const products = await productModels.getAllProducts();
-  
-  if (!products) throw new CustomError(404, 'Products not found');
   return products;
 };
 
